@@ -76,7 +76,7 @@ const InterviewList = () => {
           <StyledHeader>Interview List</StyledHeader>
           <StyledWrapper>{/* <CompanyInfo /> */}</StyledWrapper>
           {/* -----------------------------------make accordion interviews------------------------------------------- */}
-          {/* <AccordionInterviews /> */}
+          <AccordionInterviews />
           {/* ----------------------------------\/Wrap in div\/----------------------------------- */}
           <Button
             variant="contained"

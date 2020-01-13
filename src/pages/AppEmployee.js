@@ -11,7 +11,7 @@ import LoginPage from '../components/Login/LoginPage'
 import { MediaContext } from '../context/mediaContext'
 import RegistrationPage from '../components/Register/RegistrationPage'
 import EmployeeProfileEdit from '../components/EmployeeProfile/EmployeeProfileEdit'
-import InterviewList from '../components/Interviews/InterviewList'
+import InterviewList from '../components/Interview/InterviewList'
 
 function AppEmployee(props) {
   const mediaContext = useContext(MediaContext)
