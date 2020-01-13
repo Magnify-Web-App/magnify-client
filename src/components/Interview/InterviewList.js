@@ -1,17 +1,8 @@
 import React, { useState, useRef, useEffect, useReducer } from 'react'
 
 import styled from 'styled-components'
-import {
-  Button,
-  TextField,
-  MenuItem,
-  InputLabel,
-  Select,
-  FormControl,
-  makeStyles
-} from '@material-ui/core'
-import SelectInput from '@material-ui/core/Select/SelectInput'
-import AccordionInterviews from './InterviewComponents/AccordionInterviews'
+import { Button, makeStyles } from '@material-ui/core'
+import InterviewTable from './InterviewComponents/InterviewTable'
 // import CompanyInfo from '..//VacancyInfo/Components/CompanyInfo'
 
 const HeaderWrapper = styled.div`
@@ -74,9 +65,9 @@ const InterviewList = () => {
       <StyledWrapper>
         <HeaderWrapper>
           <StyledHeader>Interview List</StyledHeader>
-          <StyledWrapper>{/* <CompanyInfo /> */}</StyledWrapper>
+          {/* <StyledWrapper><CompanyInfo /></StyledWrapper> */}
           {/* -----------------------------------make accordion interviews------------------------------------------- */}
-          <AccordionInterviews />
+          <InterviewTable />
           {/* ----------------------------------\/Wrap in div\/----------------------------------- */}
           <Button
             variant="contained"
