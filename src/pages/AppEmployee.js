@@ -11,6 +11,7 @@ import LoginPage from '../components/Login/LoginPage'
 import { MediaContext } from '../context/mediaContext'
 import RegistrationPage from '../components/Register/RegistrationPage'
 import EmployeeProfileEdit from '../components/EmployeeProfile/EmployeeProfileEdit'
+import Interviews from '../components/Interviews/InterviewList'
 
 function AppEmployee(props) {
   const mediaContext = useContext(MediaContext)
@@ -23,6 +24,8 @@ function AppEmployee(props) {
           <Route exact path="/" render={props => <Landing />}></Route>
           <Route exact path="/survey" component={SurveyList}></Route>
           <Route exact path="/profile" component={EmployeeProfile}></Route>
+          <Route exact path="/interviews" component={Interviews}></Route>
+
           <Route exact path="/result" component={Result}></Route>
           <Route
             exact
