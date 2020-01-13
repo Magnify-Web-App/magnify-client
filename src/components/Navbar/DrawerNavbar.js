@@ -99,7 +99,10 @@ const DrawerNavbar = () => {
             <ListItemText primary="Result" />
           </ListItem>
         </Link>
-        <Link to="/interview" style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link
+          to="/interview"
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
           <ListItem button key="Interview" data-testid="test-interview">
             <ListItemIcon>
               <People />
@@ -107,7 +110,10 @@ const DrawerNavbar = () => {
             <ListItemText primary="Interview" />
           </ListItem>
         </Link>
-        <Link to="/vacancy" style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link
+          to="/vacancy"
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
           <ListItem button key="Vacancy" data-testid="test-vacancy">
             <ListItemIcon>
               <MeetingRoom />
@@ -125,7 +131,8 @@ const DrawerNavbar = () => {
           <ListItem
             button
             key="Account Settings"
-            data-testid="test-account-settings">
+            data-testid="test-account-settings"
+          >
             <ListItemIcon>
               <AccountCircle />
             </ListItemIcon>
@@ -136,7 +143,8 @@ const DrawerNavbar = () => {
           button
           data-testid="test-logout"
           key="Log Out"
-          onClick={handleLogout}>
+          onClick={handleLogout}
+        >
           <ListItemIcon>
             <ExitToApp />
           </ListItemIcon>
@@ -161,24 +169,15 @@ const DrawerNavbar = () => {
               <MenuIcon />
             </IconButton>
           )}
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <Link
+            to="/landing"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <Typography variant="h6" className={classes.title}>
               Magnify
             </Typography>
           </Link>
-          <div className={classes.navWrapper}>
-            {!user.email && (
-              <Link
-                to="/login"
-                style={{
-                  textDecoration: 'none',
-                  color: 'white'
-                }}
-              >
-                <Button color="inherit">Login</Button>
-              </Link>
-            )}
-          </div>
+          <div className={classes.navWrapper}></div>
         </Toolbar>
       </AppBar>
       <Drawer

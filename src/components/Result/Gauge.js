@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-class Guage extends Component {
+class Gauge extends Component {
   startColor = '#f27474'
   endColor = '#3a07f0'
 
@@ -110,4 +110,4 @@ class Guage extends Component {
   }
 }
 
-export default Guage
+export default Gauge

@@ -22,6 +22,8 @@ const FabWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 `
 
 const useStyles = makeStyles(theme => ({
@@ -231,6 +233,7 @@ const SurveyList = () => {
 
   return (
     <>
+      {console.log(user)}
       {user.email ? (
         <>
           {currestSection()}
@@ -238,7 +241,7 @@ const SurveyList = () => {
           {section !== 'DONE' ? snackBar() : null}
         </>
       ) : (
-        <Redirect to="/login" />
+        <Redirect to="/" />
       )}
     </>
   )

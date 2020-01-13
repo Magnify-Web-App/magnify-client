@@ -3,8 +3,9 @@ import { MediaContext } from '../../context/mediaContext'
 import { EmployeeContext } from '../../context/employeeContext'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
-import Guage from './Guage'
+import Gauge from './Gauge'
 import { Link } from 'react-router-dom'
+import './result.css'
 
 import {
   Radar,
@@ -42,7 +43,6 @@ const StyledHeader = styled.h1`
   color: #283593;
   font-size: 2em;
   line-height: 0;
-  margin: 3vw;
 `
 
 const Wrapper = styled.div`
@@ -50,11 +50,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: max-content;
+  max-width: 100vw;
   margin: 20px auto;
   border: solid 3px #283593;
   border-radius: 10px;
   padding: 5vh 5vh;
+  background-color: whitesmoke;
 `
 
 const FallbackWrapper = styled.div`
@@ -62,8 +63,8 @@ const FallbackWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 100vw;
-  min-height: 80vh
+  min-width: 95vw;
+  min-height: 80vh;
 `
 
 const RadarWrapper = styled.div`
@@ -74,7 +75,7 @@ const RadarWrapper = styled.div`
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: max-content;
+  width: 95%;
 `
 
 const Result = () => {
@@ -85,6 +86,25 @@ const Result = () => {
   const [TotalScore, setTotalScore] = useState()
   const resize = () => {
     setWidth(window.innerWidth)
+  }
+
+  const GenerateResult = () => {
+    if (result.length > 0) {
+      return result.map(data => {
+        return (
+          <div>
+            <h1>{data.score}</h1>
+            <h3>{data.subject}</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+              magni aliquid doloribus, sed fuga expedita maiores natus commodi
+              voluptatum laborum corrupti culpa id in eveniet quia distinctio
+              recusandae quaerat tenetur?
+            </p>
+          </div>
+        )
+      })
+    }
   }
 
   useEffect(() => {
@@ -135,7 +155,7 @@ const Result = () => {
         <>
           <Wrapper media={media}>
             <StyledHeader>Profile Overview</StyledHeader>
-            <Guage totalScore={TotalScore}></Guage>
+            <Gauge totalScore={TotalScore}></Gauge>
             <RadarWrapper>
               <RadarChart
                 cx="50%"
@@ -158,6 +178,7 @@ const Result = () => {
                 />
               </RadarChart>
             </RadarWrapper>
+            <div class="grid">{GenerateResult()}</div>
           </Wrapper>
         </>
       )

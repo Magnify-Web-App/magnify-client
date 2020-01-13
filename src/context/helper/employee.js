@@ -1,7 +1,3 @@
-const linkedin_login = () => {
-  window.open('http://localhost:3000/auth/linkedin', '_self')
-}
-
 const linkedin_logout = async () => {
   await fetch('http://localhost:3000/logout', {
     credentials: 'include',
@@ -9,7 +5,8 @@ const linkedin_logout = async () => {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true
     }
-  }).then(resp => resp.json())
+  })
+  return true
 }
 
 const getProfile = async () => {
@@ -74,7 +71,6 @@ const updateEmployee = async editedEmployee => {
 }
 
 module.exports = {
-  linkedin_login,
   linkedin_logout,
   getProfile,
   saveSurvey,

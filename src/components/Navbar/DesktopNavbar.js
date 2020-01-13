@@ -12,6 +12,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { EmployeeContext } from '../../context/employeeContext'
 import { Link } from 'react-router-dom'
+import { EmployerContext } from '../../context/employerContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,16 +38,132 @@ const useStyles = makeStyles(theme => ({
 
 const DesktopNavbar = () => {
   const employeeContext = useContext(EmployeeContext)
-  const { user, handleLogout } = employeeContext
+  const employerContext = useContext(EmployerContext)
   const classes = useStyles()
   useTheme()
-
-  return (
-    <>
+  if(employeeContext){
+    const { user, handleLogout } = employeeContext
+    return (
+      <>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar>
+            <Link
+              to="/landing"
+              style={{
+                textDecoration: 'none',
+                color: 'white'
+              }}
+            >
+              <Typography variant="h6" className={classes.title}>
+                Magnify
+              </Typography>
+            </Link>
+            {user.email && (
+              <div className={classes.navWrapper}>
+                <Badge
+                  variant="dot"
+                  color="secondary"
+                  className={classes.navButton}
+                >
+                  <Link
+                    to="/survey"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <Button color="inherit">Survey</Button>
+                  </Link>
+                </Badge>
+                <Badge
+                  variant="dot"
+                  color="secondary"
+                  className={classes.navButton}
+                >
+                  <Link
+                    to="/result"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <Button color="inherit">Result</Button>
+                  </Link>
+                </Badge>
+                <Badge
+                  variant="dot"
+                  color="secondary"
+                  className={classes.navButton}
+                >
+                  <Link
+                    to="/interview"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <Button color="inherit">Interview</Button>
+                  </Link>
+                </Badge>
+                <Badge
+                  variant="dot"
+                  color="secondary"
+                  className={classes.navButton}
+                >
+                  <Link
+                    to="/vacancies"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <Button color="inherit">Vacancy</Button>
+                  </Link>
+                </Badge>
+                <IconButton
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <Badge variant="dot" color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <Link to="/profile" style={{ color: 'white' }}>
+                  <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </Link>
+                <Button onClick={handleLogout} color="inherit">
+                  Log out
+                </Button>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </>
+    )
+  }
+  else{
+    const { user, handleLogout } = employerContext
+    return(
+      <>
       <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Link
-            to="/"
+            to="/landing"
             style={{
               textDecoration: 'none',
               color: 'white'
@@ -56,19 +173,6 @@ const DesktopNavbar = () => {
               Magnify
             </Typography>
           </Link>
-          {!user.email && (
-            <div className={classes.navWrapper}>
-              <Link
-                to="/login"
-                style={{
-                  textDecoration: 'none',
-                  color: 'white'
-                }}
-              >
-                <Button color="inherit">Login</Button>
-              </Link>
-            </div>
-          )}
           {user.email && (
             <div className={classes.navWrapper}>
               <Badge
@@ -77,7 +181,7 @@ const DesktopNavbar = () => {
                 className={classes.navButton}
               >
                 <Link
-                  to="/survey"
+                  to="/vacancy"
                   style={{
                     textDecoration: 'none',
                     color: 'white',
@@ -85,7 +189,7 @@ const DesktopNavbar = () => {
                     alignItems: 'center'
                   }}
                 >
-                  <Button color="inherit">Survey</Button>
+                  <Button color="inherit">Vacancy</Button>
                 </Link>
               </Badge>
               <Badge
@@ -94,7 +198,7 @@ const DesktopNavbar = () => {
                 className={classes.navButton}
               >
                 <Link
-                  to="/result"
+                  to="/delegates"
                   style={{
                     textDecoration: 'none',
                     color: 'white',
@@ -102,7 +206,7 @@ const DesktopNavbar = () => {
                     alignItems: 'center'
                   }}
                 >
-                  <Button color="inherit">Result</Button>
+                  <Button color="inherit">Delegates</Button>
                 </Link>
               </Badge>
               <Badge
@@ -110,14 +214,17 @@ const DesktopNavbar = () => {
                 color="secondary"
                 className={classes.navButton}
               >
-                <Button color="inherit">Interview</Button>
-              </Badge>
-              <Badge
-                variant="dot"
-                color="secondary"
-                className={classes.navButton}
-              >
-                <Button color="inherit">Vacancy</Button>
+                <Link
+                  to="/employees"
+                  style={{
+                    textDecoration: 'none',
+                    color: 'white',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                >
+                  <Button color="inherit">Employees</Button>
+                </Link>
               </Badge>
               <IconButton
                 aria-label="show 17 new notifications"
@@ -145,7 +252,9 @@ const DesktopNavbar = () => {
         </Toolbar>
       </AppBar>
     </>
-  )
+    )
+  }
+  
 }
 
 export default DesktopNavbar
