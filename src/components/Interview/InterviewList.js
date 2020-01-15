@@ -15,6 +15,14 @@ import {
   TableRow
 } from '@material-ui/core'
 
+const Flexing = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+`
+
 const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,8 +68,8 @@ const columns = [
     format: value => value.toLocaleString()
   },
   {
-    id: 'apply/decline',
-    label: 'Apply/Decline',
+    id: 'action',
+    label: 'Action',
     minWidth: 80,
     align: 'right',
     format: value => value.toFixed(2)
@@ -162,7 +170,7 @@ const InterviewList = () => {
                       >
                         {columns.map(column => {
                           const value = row[column.id]
-                          if (column.id === 'apply/decline') {
+                          if (column.id === 'action') {
                             return (
                               <TableCell key={column.id} align={column.align}>
                                 <Checkbox
@@ -199,8 +207,10 @@ const InterviewList = () => {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
         </Paper>
-        <AcceptButton />
-        <DeclineButton />
+        <Flexing>
+          <AcceptButton />
+          <DeclineButton />
+        </Flexing>
       </StyledWrapper>
     </>
   )
