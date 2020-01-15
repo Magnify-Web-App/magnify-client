@@ -3,10 +3,9 @@ import React, { useState, useRef, useEffect, useReducer } from 'react'
 import styled from 'styled-components'
 import { Button, makeStyles } from '@material-ui/core'
 import InterviewTable from './InterviewComponents/InterviewTable'
+import ApplyButton from '../Button/ApplyButton'
 import AcceptButton from '../Button/AcceptButton'
 import DeclineButton from '../Button/DeclineButton'
-import TableCell from '@material-ui/core/TableCell'
-import Checkbox from '@material-ui/core/Checkbox'
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -61,12 +60,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 /* ========================================================================== */
-function EnhancedTableHead(props) {
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = property => event => {
-    onRequestSort(event, property);
-  };
-
 
 const InterviewList = () => {
   return (
@@ -74,21 +67,9 @@ const InterviewList = () => {
       <StyledWrapper>
         <HeaderWrapper>
           <StyledHeader>Interview List</StyledHeader>
-          {/* <StyledWrapper><CompanyInfo /></StyledWrapper> */}
-          {/* -----------------------------------make accordion interviews------------------------------------------- */}
           <InterviewTable />
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-              inputProps={{ 'aria-label': 'select all desserts' }}
-            />
-          </TableCell>
-          {/* ----------------------------------\/Wrap in div\/----------------------------------- */}
           <AcceptButton />
           <DeclineButton />
-          {/* ----------------------------------^Wrap in div^----------------------------------- */}
         </HeaderWrapper>
       </StyledWrapper>
     </>
