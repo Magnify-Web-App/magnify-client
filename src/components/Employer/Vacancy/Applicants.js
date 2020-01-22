@@ -3,6 +3,7 @@ import MaterialTable from 'material-table'
 import { EmployerContext } from '../../../context/employerContext'
 import DoneIcon from '@material-ui/icons/Done'
 import CloseIcon from '@material-ui/icons/Close'
+import { Link } from 'react-router-dom'
 
 const columns = [
   {
@@ -16,7 +17,16 @@ const columns = [
   { title: 'Email', field: 'email', filtering: false },
   { title: 'Rating', field: 'rating', filtering: false },
   { title: 'Industry', field: 'category' },
-  { title: 'Interview', render: rowData => <DoneIcon /> },
+  {
+    title: 'Interview',
+    render: rowData => {
+      return (
+        <Link to={{ pathname: '/delegates' }}>
+          <DoneIcon />
+        </Link>
+      )
+    }
+  },
   { title: 'Decline', render: rowData => <CloseIcon /> }
 ]
 
@@ -70,8 +80,19 @@ const Applicants = props => {
     setApplicants(generateApplicants())
   }, [])
   const generateApplicants = () => {
+    console.log(props.applicants)
     if (props.applicants.length > 0) {
-      return dummy
+      let data = []
+      props.applicants.forEach(app => {
+        data.push({
+          displayName: app.displayName,
+          email: app.email,
+          rating: app.score.rating,
+          category: app.category,
+          photos: app.photos
+        })
+      })
+      return data
     } else {
       return dummy
     }
