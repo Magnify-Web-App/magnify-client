@@ -67,7 +67,7 @@ export default function TransitionsModal(props) {
               <br />
               Date :
               <input
-                type="text"
+                type="date"
                 value={date}
                 ref={props.setDate}
                 className="field"

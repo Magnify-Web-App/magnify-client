@@ -29,6 +29,23 @@ export const getProfile = async () => {
   }
 }
 
+export const getAllVacancies = async () => {
+  try {
+    const vacancies = await fetch(URL + '/vacancies', {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true
+      }
+    }).then(resp => resp.json())
+    if (vacancies) {
+      return vacancies
+    }
+  } catch (error) {
+    return error
+  }
+}
+
 export const isRegistered = user => {
   if (user.category.length === 0) {
     return false
@@ -66,6 +83,20 @@ export const updateEmployee = async editedEmployee => {
   const resp = fetch(URL + '/employee/update', {
     method: 'PUT',
     body: JSON.stringify(editedEmployee),
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true
+    }
+  })
+  return resp
+}
+
+export const updateVacancy = async updatedVacancy => {
+  // console.log(updatedVacancy)
+  const resp = fetch(URL + `/vacancies/${updatedVacancy._id}`, {
+    method: 'PUT',
+    body: JSON.stringify(updatedVacancy),
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',

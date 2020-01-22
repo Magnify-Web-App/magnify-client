@@ -1,8 +1,9 @@
-import React, { useState ,useContext } from 'react'
+import React, { useState ,useContext, useEffect } from 'react'
 import MaterialTable from 'material-table';
 import styled from 'styled-components'
 import GeneralButton from '../../Button/GeneralButton';
 import { MediaContext } from '../../../context/mediaContext';
+import { EmployeeContext } from '../../../context/employeeContext';
 
 const StyledWrapper = styled.div`
   padding: ${(props) => props.media ? "5vh 15vw" : "5vw 2vw"};
@@ -11,97 +12,34 @@ const StyledWrapper = styled.div`
 
 // Title, description, creator, salary, industry, applicants, isOpen
 
-const dummy = [
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  },
-  {
-    title: "Developer",
-    description: "React, Express, Database, IT stuff",
-    creator: "BOYM",
-    salary: "30000-50000",
-    industry: "Information Technology",
-    isOpen: "true"
-  }
-]
-
 const VacanciesList = () => {
   const mediaContext = useContext(MediaContext)
+  const employeeContext = useContext(EmployeeContext)
   const [selected, setSelected] = useState([])
-  const [data, setData] = useState(dummy);
+  const [data, setData] = useState();
   const { media } = mediaContext
+  const { user, getAllVacancies, updateVacancyById } = employeeContext
+
+  const applyToSelected = () => {
+    selected.forEach(async (vacancy)=>{
+      if(!vacancy.applicants.includes(user)){
+        vacancy.applicants.push(user)
+        await updateVacancyById(vacancy)
+      }
+    })
+  }
+
+  useEffect(() => {
+      async function fetchVacancies() {
+        let vacancies = await getAllVacancies()
+        setData(vacancies)
+      }
+      fetchVacancies()
+    }, [getAllVacancies])
+
   const columns = [
     { title: 'Title', field: 'title'},
-    { title: 'Company', field: 'creator'},
+    { title: 'Company', field: 'creator.companyName'},
     { title: 'Salary', field: 'salary'},
     { title: 'Industry', field: 'industry', lookup: { 
       1: 'Aerospace',
@@ -124,7 +62,6 @@ const VacanciesList = () => {
       18: 'Worldwide web',
       19: 'Electronics'
     }},
-    { title: 'Status', field: 'isOpen'},
     { title: 'Description', field: 'description'}
   ]
   
@@ -139,9 +76,11 @@ const VacanciesList = () => {
             selection: true,
             pageSize: 10
           }}
-          onSelectionChange={(rows) => setSelected(rows)}
+          onSelectionChange={(rows) => {
+            setSelected(rows)
+          }}
         />
-        <GeneralButton label="Apply" testid="apply-button" />
+        <GeneralButton label="Apply" testid="apply-button" handleClick={applyToSelected} />
       </StyledWrapper>
     </>
   )

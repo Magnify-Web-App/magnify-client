@@ -27,7 +27,7 @@ const FabWrapper = styled.div`
   align-items: center;
   width: 100%;
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5vh;
 `
 
 const useStyles = makeStyles(theme => ({

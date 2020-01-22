@@ -62,11 +62,10 @@ const Wrapper = styled.div`
   align-items: center;
   margin: 20px auto;
   max-width: 100vw;
-  width: 90%;
+  width: max-content;
   padding: 4%;
-  border: solid 3px #283593;
-  border-radius: 10px;
-  background-color: whitesmoke;
+  background-color: #FFFFFF;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 1), -9px -9px 16px #ffffff;
 `
 
 const FallbackWrapper = styled.div`
@@ -74,8 +73,7 @@ const FallbackWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 95vw;
-  min-height: 80vh;
+  min-height: 90vh;
 `
 
 const RadarWrapper = styled.div`

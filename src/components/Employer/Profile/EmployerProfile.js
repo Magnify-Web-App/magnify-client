@@ -23,6 +23,8 @@ const ProfileContainer = styled.div`
   width: ${props => (props.media ? '40vw' : '80vw')};
   padding: 30px;
   min-height: 50vh;
+  max-height: max-content;
+  max-width: ${props => (props.media ? '40vw' : '80vw')};
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 1), -9px -9px 16px #ffffff;
 `
 const ProfilePicture = styled.img`
@@ -44,20 +46,18 @@ const LittleHeader = styled.h2`
   justify-content: left;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  width: 100%;
-  font-size: 0.7em;
+  font-size: 1em;
   margin: 0;
-  font-weight: 40;
-  color: #ffa726;
+  font-weight: 300;
+  color: #283593;
 `
 const Info = styled.h3`
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.2em;
   margin: 0;
   font-weight: 300;
   color: #000000;
-  opacity: 0.5;
 `
 
 const Flexing = styled.h3`
@@ -65,7 +65,6 @@ const Flexing = styled.h3`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
   font-family: 'Roboto', sans-serif;
   margin: 0;
   margin-top: 3vh;
@@ -77,23 +76,20 @@ const RepWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: solid 3px #283593;
-  border-radius: 10px;
   border-color: lightgray;
-  padding: 3vh 3vw;
   min-height: auto;
   max-width: 90%;
-  margin: 3vh;
 `
 
 const EmployerProfile = () => {
   const { media } = useContext(MediaContext)
   const { user } = useContext(EmployerContext)
+  console.log(user)
   if (user.email) {
     return (
       <>
         <ProfileWrapper media={media ? media.toString() : null}>
-          <ProfileContainer>
+          <ProfileContainer media={media ? media.toString() : null}>
             <AbsoluteWrapper>
               <Link to="/profile/edit">
                 <EditButton />
@@ -109,26 +105,23 @@ const EmployerProfile = () => {
                 <Info>{user.displayName}</Info>
               </Flexing>
               <Flexing>
-                <LittleHeader>Email:</LittleHeader>
+                <LittleHeader>Company rep email:</LittleHeader>
                 <Info> {user.email}</Info>
               </Flexing>
+              <Flexing>
+                <LittleHeader>Company Name:</LittleHeader>
+                <Info>{user.companyName}</Info>
+              </Flexing>
+              <Flexing>
+                <LittleHeader>Company Address:</LittleHeader>
+                <Info>{user.address}</Info>
+              </Flexing>
+              <Flexing>
+                <LittleHeader>Company Description:</LittleHeader>
+                <Info>{user.description}</Info>
+              </Flexing>
             </RepWrapper>
-            <Flexing>
-              <LittleHeader>Company Name:</LittleHeader>
-              <Info>{user.companyName}</Info>
-            </Flexing>
-            <Flexing>
-              <LittleHeader>Company Address:</LittleHeader>
-              <Info>{user.address}</Info>
-            </Flexing>
-            <Flexing>
-              <LittleHeader>Company Description:</LittleHeader>
-              <Info>{user.companyDescription}</Info>
-            </Flexing>
-            <Flexing>
-              <LittleHeader>Credit Card Info</LittleHeader>
-              <Info>{user.creditCardInfo}</Info>
-            </Flexing>
+            
           </ProfileContainer>
         </ProfileWrapper>
       </>
