@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/magnify-client/static/css/main.9503f1b5.chunk.css",
+    "main.js": "/magnify-client/static/js/main.3efd0cd5.chunk.js",
+    "main.js.map": "/magnify-client/static/js/main.3efd0cd5.chunk.js.map",
+    "runtime-main.js": "/magnify-client/static/js/runtime-main.17859e17.js",
+    "runtime-main.js.map": "/magnify-client/static/js/runtime-main.17859e17.js.map",
+    "static/js/2.d6f68a24.chunk.js": "/magnify-client/static/js/2.d6f68a24.chunk.js",
+    "static/js/2.d6f68a24.chunk.js.map": "/magnify-client/static/js/2.d6f68a24.chunk.js.map",
+    "index.html": "/magnify-client/index.html",
+    "precache-manifest.1d84a6b4306f5e222d8e6015443b4fa1.js": "/magnify-client/precache-manifest.1d84a6b4306f5e222d8e6015443b4fa1.js",
+    "service-worker.js": "/magnify-client/service-worker.js",
+    "static/css/main.9503f1b5.chunk.css.map": "/magnify-client/static/css/main.9503f1b5.chunk.css.map",
+    "static/js/2.d6f68a24.chunk.js.LICENSE": "/magnify-client/static/js/2.d6f68a24.chunk.js.LICENSE",
+    "static/media/2895265.jpg": "/magnify-client/static/media/2895265.3f125ede.jpg",
+    "static/media/312.jpg": "/magnify-client/static/media/312.649bc464.jpg",
+    "static/media/images.jpeg": "/magnify-client/static/media/images.aa259fc9.jpeg",
+    "static/media/public.jpg": "/magnify-client/static/media/public.40607791.jpg",
+    "static/media/survey.jpg": "/magnify-client/static/media/survey.8d991bd2.jpg",
+    "static/media/survey.jpeg": "/magnify-client/static/media/survey.afdcf291.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.17859e17.js",
+    "static/js/2.d6f68a24.chunk.js",
+    "static/css/main.9503f1b5.chunk.css",
+    "static/js/main.3efd0cd5.chunk.js"
+  ]
+}
