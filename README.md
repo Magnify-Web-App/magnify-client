@@ -1,68 +1,152 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Magnify Web Application
 
-## Available Scripts
+## Summary
 
-In the project directory, you can run:
+Magnify is a cross-platform application that provides prospective employers a hassle free candidate rating system.
 
-### `npm start`
+### Purpose and Target Audience
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Finding good candidates to interview for job positions is a long and difficult process. Magnify helps bring the information hiring managers need to make educated decisions before the interview process. With the target audience being hiring managers and prospective employers, the application is aimed at providing a smooth and informative user experience to help find lasting employees.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The core functionality revolves around a survey that produces a psychological profile on candidates. The client requested a web platform to bring the survey into the public eye.
 
-### `npm test`
+### Functionality/Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Employers can use a link to bring potential candidates found externally into Magnify in order to complete the survey.
 
-### `npm run build`
+- All users log in using their LinkedIn information. This removes the need for users to put any information that they would already have listen on the LinkedIn platform.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Employers can create Vacancies for potential applicants to apply.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- The survey and overall site is well presented and easy to navigate.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies
 
-### `npm run eject`
+Core technologies:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Javascript
+- MongoDB for the database
+- Git and Github for version control
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Javascript MERN Stack for frameworking functionality
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- MongoDB (With Mongoose for Object Data Modeling)
+- Express (Node Web API Platform)
+- React (Client side Rendering)
+- Nodejs (Server side Javascript)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For deployment and cloud databasing
 
-## Learn More
+- [Heroku for Backend](https://www.heroku.com/)
+- [Netlify for Frontend](https://www.netlify.com/)
+- [Cloud Atlas MongoDB](https://www.mongodb.com/cloud/atlas)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Design Documents
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Userflow Diagram
 
-### Code Splitting
+![Userflow Diagram](./docs/userflow-diagram.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Application Architecture
 
-### Analyzing the Bundle Size
+![Application architecture diagram](./docs/application-architecture-diagram.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Dataflow Diagram
 
-### Advanced Configuration
+![Dataflow Diagram](./docs/data-flow-diagram.jpg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Architecture Dataflow
 
-### Deployment
+![Architecture Breakdown](./docs/architecture-breakdown.jpg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Wireframes
 
-### `npm run build` fails to minify
+#### Desktop Views
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##### Employer Desktop
+
+![Employer Desktop](./docs/employer-desktop.png)
+
+##### Candidate Desktop
+
+![Candidate Desktop](./docs/employee-desktop.png)
+
+#### Large Devices Views
+
+##### Employer Large Device
+
+![Employer Large Device](./docs/large-employer.png)
+
+##### Candidate Large Device
+
+![Candidate Large Device](./docs/large-employee.png)
+
+#### Mobile Views
+
+##### Employer Mobile
+
+![Employer Mobile](./docs/employer-mobile.png)
+
+##### Candidate Mobile
+
+![Candidate Mobile](./docs/employee-mobile.png)
+
+## Agile Processess
+
+In order to organise the team effectively we chose to work with a variation of the agile framework Scrum. Using no official roles under the scrum framework we instead took Scrum events/ceremonies and artifacts to self organise our team. 
+
+For staying on track the team uses the scrum ceremonies of daily standups and sprint planning and retrospectives. 
+
+The core structure we use is the backlog of user stories and epics. These are actionable descriptions of what the application provides the end user. This allows the development process to be user focused. From the backlog we take a selection of stories the team believes we can achieve in a sprint cycle.
+
+
+![Trello Board](./docs/trello-screenshot.png)
+
+
+## User Stories
+
+As part of the agile environment user stories form the basis for any work that is to be completed. At this stage of development we have decided on four epics that will guide the application.
+
+### (Survey Epic) As a candidate I should be able to complete the survey that matches me with potential employers so that I can be hired by a company that fits my culture
+
+- As a candidate I should be able to navigate easily to the survey so that I can complete it quickly
+
+- As a candidate I should be able to navigate all throughout the survey before submitting so that I can change my answers
+
+- As a candidate I should be able to see my survey progress so that I am well informed on my progress
+
+- As an employer I should be able to invite users to the platform to complete the survey so that I can view results
+
+- As a candidate I should be able to come back to an uncompleted survey so that I do not need to start over
+
+- As a candidate I should be able to interact with a user interface that is easy to understand so that I do not need to learn anything new
+
+### (Result Epic) As an employer I should be able to view candidate's survey results so that I can hire the best candidates
+
+- As an employer I should only be able to view candidates that have completed the survey recently so that I am getting relevant and accurate information
+
+- As an employer I should be able to send an interview invitation to a candidate so that I do not need to contact them outside the platform
+
+- As an employer I should be able to pay to view a detailed description of my candidates results so that I can form a complete picture of the candidate
+
+### (Auth Epic) As a Magnify User I should be able to sign in with only my LinkedIn account for an easier sign up experience
+
+- As a visitor to the website I should be able to view a description of Magnify's services so that I can be incited to join
+
+- As a Magnify user no site visitor's can view my information without being authenticated so that my privacy is respected
+
+- As a candidate no other user can edit my profile so that I can maintain my privacy
+
+- As a user my Magnify account information should be my up to date LinkedIn information so that I do not need excessive maintenance on my account
+
+- As a recruitment manager I should be able to use my company's LinkedIn account to sign up as a company admin so that I can use the service
+
+### (Vacancies Epic) As a Magnify user there should be job vacancies so that there is incentive for survey completion
+
+- As an employer I should be able to see my open vacancies so that I can see all applicants
+
+- As an employer I should be able to see my closed vacancies so that I can manage the applicant history
+
+- As a candidate I should be able to apply for job vacancies so that I can find a good job fit
