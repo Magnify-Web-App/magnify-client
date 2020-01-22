@@ -6,6 +6,7 @@ import { MediaContext } from '../../../context/mediaContext'
 import { withRouter } from 'react-router-dom'
 import loader from './loader.gif'
 import Modal from './Modal'
+import { filter } from 'minimatch'
 const { URL } = require('../../../config')
 
 const StyledWrapper = styled.div`

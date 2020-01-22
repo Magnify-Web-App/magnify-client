@@ -8,13 +8,16 @@ import CategorySelect from '../CategorySelect/CategorySelect'
 import BioTextbox from '../../TextBoxes/BioTextbox'
 import CloseIcon from '@material-ui/icons/Close'
 import GeneralButton from '../../Button/GeneralButton'
+import SalarySelect from '../Register/SalarySelect'
 
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 5vh 0;
+  min-height: 110vh;
+  max-height: max-content;
+
 `
 
 const ProfileContainer = styled.div`
@@ -23,7 +26,7 @@ const ProfileContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  width: ${props => (props.media ? '40vw' : '80vw')};
+  width: ${props => (props.media ? '35vw' : '80vw')};
   padding: 30px;
   min-height: 50vh;
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 1), -9px -9px 16px #ffffff;
@@ -70,6 +73,7 @@ const EmployeeProfileEdit = () => {
   const { user, handleUpdate } = useContext(EmployeeContext)
   const [category, setCategory] = useState(user.category)
   const [biography, setBiography] = useState(user.bio)
+  const [salary, setSalary] = useState(user.salary)
   let history = useHistory()
 
   const handleClick = () => {
@@ -77,13 +81,14 @@ const EmployeeProfileEdit = () => {
     if (category.length > 0) {
       editedUser.category = category
       editedUser.bio = biography
+      editedUser.salary = salary
       handleUpdate(editedUser)
       history.push('/profile')
     }
   }
 
   return (
-    <>
+    <>  
       <ProfileWrapper media={media ? media.toString() : null}>
         <ProfileContainer media={media ? media.toString() : null}>
           <AbsoluteWrapper>
@@ -98,9 +103,10 @@ const EmployeeProfileEdit = () => {
             media={media ? media.toString() : null}
           />
           <DisplayName data-testid="profile-name">
-            {user.displayName}
+            {user.displayName}  
           </DisplayName>
           <Email data-testid="profile-email">{user.email}</Email>
+          <SalarySelect current={salary} handleChange={setSalary}/>
           <CategorySelect
             current={user.category}
             handleChange={setCategory}

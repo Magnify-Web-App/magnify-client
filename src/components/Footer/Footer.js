@@ -112,12 +112,12 @@ const FooterComponent = () => {
               <FooterH4>Navigate</FooterH4>
               <ul>
                 <li>
-                  <Link to="/vacancies" className={classes.footerLink}>
+                  <Link to="/vacancy" className={classes.footerLink}>
                     Vacancies
                   </Link>
                 </li>
                 <li>
-                  <Link to="/employee" className={classes.footerLink}>
+                  <Link to="/delegates" className={classes.footerLink}>
                     Public
                   </Link>
                 </li>
@@ -132,24 +132,33 @@ const FooterComponent = () => {
               <FooterH4>Social</FooterH4>
               <ul className="plain">
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://twitter.com/?lang=en"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-twitter">&nbsp;</i>Twitter
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://www.facebook.com/"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-facebook">&nbsp;</i>Facebook
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://www.instagram.com/"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-instagram">&nbsp;</i>Instagram
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a href="https://github.com/" className={classes.footerLink}>
                     <i className="icon fa-github">&nbsp;</i>Github
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </FooterContentSectionLast>
@@ -158,7 +167,6 @@ const FooterComponent = () => {
         </>
       </Footer>
     )
-    //   ==================================================================Employer context
   } else {
     return (
       <Footer>
@@ -187,12 +195,12 @@ const FooterComponent = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/results" className={classes.footerLink}>
+                  <Link to="/result" className={classes.footerLink}>
                     Results
                   </Link>
                 </li>
                 <li>
-                  <Link to="/vacancy" className={classes.footerLink}>
+                  <Link to="/vacancies" className={classes.footerLink}>
                     Vacancies
                   </Link>
                 </li>
@@ -207,24 +215,33 @@ const FooterComponent = () => {
               <FooterH4>Social</FooterH4>
               <ul className="plain">
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://twitter.com/?lang=en"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-twitter">&nbsp;</i>Twitter
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://www.facebook.com/"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-facebook">&nbsp;</i>Facebook
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a
+                    href="https://www.instagram.com/"
+                    className={classes.footerLink}
+                  >
                     <i className="icon fa-instagram">&nbsp;</i>Instagram
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/" className={classes.footerLink}>
+                  <a href="https://github.com/" className={classes.footerLink}>
                     <i className="icon fa-github">&nbsp;</i>Github
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </FooterContentSectionLast>

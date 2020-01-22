@@ -7,6 +7,8 @@ import { EmployerContext } from '../../../context/employerContext'
 import SaveButton from '../../Button/GeneralButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Textfield from '../../TextBoxes/Textfield'
+import BioTextbox from '../../TextBoxes/BioTextbox'
+import GeneralButton from '../../Button/GeneralButton'
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -25,6 +27,8 @@ const ProfileContainer = styled.div`
   width: ${props => (props.media ? '40vw' : '80vw')};
   padding: 30px;
   min-height: 50vh;
+  max-height: max-content;
+  max-width: ${props => (props.media ? '40vw' : '80vw')};
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 1), -9px -9px 16px #ffffff;
 `
 
@@ -46,33 +50,24 @@ const AbsoluteWrapper = styled.div`
     opacity: 1;
   }
 `
-const TextfieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 40vh;
-  min-width: 35vw;
-`
+
 const LittleHeader = styled.h2`
   display: flex;
   justify-content: left;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  width: 100%;
-  font-size: 2.5vh;
+  font-size: 1em;
   margin: 0;
-  font-weight: 40;
-  color: #ffa726;
+  font-weight: 300;
+  color: #283593;
 `
 const Info = styled.h3`
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.2em;
   margin: 0;
   font-weight: 300;
   color: #000000;
-  opacity: 0.5;
 `
 
 const Flexing = styled.h3`
@@ -80,46 +75,33 @@ const Flexing = styled.h3`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
   font-family: 'Roboto', sans-serif;
-  margin: 1.5vh;
+  margin: 0;
+  margin-top: 3vh;
   font-weight: 400;
   color: #283593;
 `
-const RepWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border: solid 3px #283593;
-  border-radius: 10px;
-  border-color: lightgray;
-  padding: 3vh 3vw;
-  min-height: auto;
-  max-width: 90%;
-  margin: 3vh;
-`
+
 const EmployerProfileEdit = () => {
   const { media } = useContext(MediaContext)
   const { user, handleUpdate } = useContext(EmployerContext)
   const [companyName, setCompanyName] = useState(user.companyName)
   const [companyAddress, setCompanyAddress] = useState(user.address)
-  const [description, setDescription] = useState(user.companyDescription)
+  const [description, setDescription] = useState(user.description)
   console.log(user.companyName)
   let history = useHistory()
   const handleClick = () => {
     const editedUser = user
     editedUser.companyName = companyName
     editedUser.address = companyAddress
-    editedUser.companyDescription = description
-
+    editedUser.description = description
     handleUpdate(editedUser)
     history.push('/profile')
   }
   return (
     <>
       <ProfileWrapper media={media ? media.toString() : null}>
-        <ProfileContainer>
+        <ProfileContainer media={media ? media.toString() : null}>
           <AbsoluteWrapper>
             <Link to="/profile">
               <CloseIcon />
@@ -130,37 +112,18 @@ const EmployerProfileEdit = () => {
             src={user.photos}
             alt="avatar"
           />
-          <RepWrapper>
-            <Flexing>
-              <LittleHeader>Company rep:</LittleHeader>
-              <Info>{user.displayName}</Info>
-            </Flexing>
-            <Flexing>
-              <LittleHeader>Email:</LittleHeader>
-              <Info> {user.email}</Info>
-            </Flexing>
-          </RepWrapper>
-          <TextfieldWrapper>
-            <Textfield
-              label="Company Name"
-              handleChange={setCompanyName}
-              defaultValue={user.companyName}
-              size="small"
-            />
-            <Textfield
-              label="Company Address"
-              handleChange={setCompanyAddress}
-              defaultValue={user.address}
-              size="small"
-            />
-            <Textfield
-              label="Company Description"
-              handleChange={setDescription}
-              defaultValue={user.companyDescription}
-              size="small"
-            />
-          </TextfieldWrapper>
-          <SaveButton label={'Save'} handleClick={handleClick} />
+          <Flexing>
+            <LittleHeader>Company rep:</LittleHeader>
+            <Info>{user.displayName}</Info>
+          </Flexing>
+          <Flexing>
+            <LittleHeader>Company rep email:</LittleHeader>
+            <Info> {user.email}</Info>
+          </Flexing>
+          <Textfield defaultValue={companyName} label="Company Name" handleChange={setCompanyName}/>
+          <Textfield defaultValue={companyAddress} label="Address" handleChange={setCompanyAddress}/>
+          <BioTextbox current={description} handleChange={setDescription} label="Company description"/>
+          <GeneralButton label="Update Account" handleClick={handleClick}/>
         </ProfileContainer>
       </ProfileWrapper>
     </>

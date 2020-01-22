@@ -12,11 +12,11 @@ import styled from 'styled-components'
 import EditButton from '../../Button/EditButton'
 
 const ProfileWrapper = styled.div`
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 5vh 0;
 `
 
 const ProfileContainer = styled.div`

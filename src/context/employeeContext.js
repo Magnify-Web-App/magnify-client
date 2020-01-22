@@ -5,7 +5,9 @@ import {
   saveSurvey,
   fetchSubmitSurvey,
   isRegistered,
-  updateEmployee
+  updateEmployee,
+  getAllVacancies,
+  updateVacancy
 } from './helper/employee'
 
 export const EmployeeContext = createContext()
@@ -39,10 +41,15 @@ const EmployeeContextProvider = props => {
   const updateCurrent = async (section, page) => {
     setUser(prevState => {
       const newUser = prevState
-      newUser.current.current_count = page
+      newUser.current.current_count = page + 1
       newUser.current.current_section = section
       return newUser
     })
+  }
+
+  const updateVacancyById = async updatedVacancy => {
+    const response = await updateVacancy(updatedVacancy)
+    return response
   }
 
   useEffect(() => {
@@ -71,7 +78,9 @@ const EmployeeContextProvider = props => {
         saveSurvey,
         submitSurvey,
         handleUpdate,
-        updateCurrent
+        updateCurrent,
+        getAllVacancies,
+        updateVacancyById
       }}
     >
       {props.children}

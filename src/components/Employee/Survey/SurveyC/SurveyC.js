@@ -14,6 +14,7 @@ import SurveySlider from '../SurveySlider/SurveySlider'
 const survey = require('../Survey.json')
 
 const StyledWrapper = styled.div`
+  background-color: #FFFFFF;
   border: solid #283593;
   display: flex;
   flex-direction: column;
