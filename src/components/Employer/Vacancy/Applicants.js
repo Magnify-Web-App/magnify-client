@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import MaterialTable from 'material-table'
 import { EmployerContext } from '../../../context/employerContext'
 import DoneIcon from '@material-ui/icons/Done'
@@ -76,9 +76,12 @@ const Applicants = props => {
     deleteVacancyById
   } = employerContext
   const [applicants, setApplicants] = useState(dummy)
+
+  const focus = useRef(null)
   useEffect(() => {
     setApplicants(generateApplicants())
   }, [])
+
   const generateApplicants = () => {
     console.log(props.applicants)
     if (props.applicants.length > 0) {
@@ -92,20 +95,25 @@ const Applicants = props => {
           photos: app.photos
         })
       })
+      focus.current.focus()
       return data
     } else {
       return dummy
     }
   }
   return (
-    <MaterialTable
-      title="Applicants"
-      columns={columns}
-      data={applicants}
-      options={{
-        pageSize: 5
-      }}
-    />
+    <div ref={focus} tabIndex="0">
+      <br />
+      <MaterialTable
+        title="Applicants"
+        columns={columns}
+        data={applicants}
+        options={{
+          pageSize: 5
+        }}
+      />
+      <br />
+    </div>
   )
 }
 

@@ -4,9 +4,8 @@ import styled from 'styled-components'
 import { EmployerContext } from '../../../context/employerContext'
 import { MediaContext } from '../../../context/mediaContext'
 import { withRouter } from 'react-router-dom'
-import loader from './loader.gif'
 import Modal from './Modal'
-import { filter } from 'minimatch'
+import CircularProgress from '@material-ui/core/CircularProgress'
 const { URL } = require('../../../config')
 
 const StyledWrapper = styled.div`
@@ -57,13 +56,16 @@ const Delegates = props => {
           delegate.rating = delegate.score.rating
           return delegate
         })
-        setData(delegates)
+        if (user.email) setData(delegates)
       }
       fetchDelegates()
     }
   }, [user.email, getAllDelegates])
 
   const inviteEmail = async () => {
+    console.log(selected)
+    console.log(addressRef.value)
+    console.log(dateRef.value)
     if (selected.length > 0 && addressRef.value && dateRef.value) {
       setLoading(true)
       const email_list = selected.map(user => {
@@ -120,7 +122,7 @@ const Delegates = props => {
         <div className="box">
           <h1>Sending an email</h1>
           <br />
-          <img src={loader} alt="loader" />
+          <CircularProgress />
           <p className="mute">please wait for a moment...</p>
         </div>
       )}
